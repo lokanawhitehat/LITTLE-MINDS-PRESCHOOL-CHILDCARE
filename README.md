@@ -27,6 +27,4 @@ Live site:
 - Email integration using `mailto:` so enquiries open an email to  
   **littlemindschildcarebrooklin@gmail.com**
 
-## Running locally
 
-Clone the repo and open `index.html` in your browser, or serve the folder with any static file server:
