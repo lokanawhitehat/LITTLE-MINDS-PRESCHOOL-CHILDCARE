@@ -89,10 +89,11 @@ main {
 }
 
 .lm-logo-title {
-  font-family: "Quicksand", system-ui, sans-serif;
-  font-weight: 600;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-weight: bold;
   font-size: 22px;
   letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .lm-logo-subtitle {
@@ -402,7 +403,7 @@ main {
   align-items: center;
   gap: 12px;
   padding: 10px 12px;
-  animation: lm-gallery-scroll 60s linear infinite;
+  animation: lm-gallery-scroll 35s linear infinite;
 }
 
 .lm-gallery-track img {
