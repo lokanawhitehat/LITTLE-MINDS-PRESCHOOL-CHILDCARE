@@ -18,6 +18,10 @@ const lightbox = document.getElementById("lm-lightbox");
 const lightboxImg = document.getElementById("lm-lightbox-img");
 const lightboxClose = lightbox ? lightbox.querySelector(".lm-lightbox-close") : null;
 const lightboxBackdrop = lightbox ? lightbox.querySelector(".lm-lightbox-backdrop") : null;
+const heroAlbum = document.getElementById("lm-hero-album");
+const galleryModal = document.getElementById("lm-gallery-modal");
+const galleryModalClose = galleryModal ? galleryModal.querySelector(".lm-gallery-modal-close") : null;
+const galleryModalBackdrop = galleryModal ? galleryModal.querySelector(".lm-gallery-modal-backdrop") : null;
 
 const LITTLE_MINDS_CONFIG = {
   leadWebhookUrl: "", // Optional: backend endpoint to receive lead/contact data
@@ -528,6 +532,16 @@ window.addEventListener("load", () => {
   }
 });
 
+function openGalleryModal() {
+  if (!galleryModal) return;
+  galleryModal.hidden = false;
+}
+
+function closeGalleryModal() {
+  if (!galleryModal) return;
+  galleryModal.hidden = true;
+}
+
 function openLightbox(src, alt) {
   if (!lightbox || !lightboxImg) return;
   lightboxImg.src = src;
@@ -539,6 +553,18 @@ function closeLightbox() {
   if (!lightbox || !lightboxImg) return;
   lightbox.hidden = true;
   lightboxImg.src = "";
+}
+
+if (heroAlbum && galleryModal) {
+  heroAlbum.addEventListener("click", openGalleryModal);
+}
+
+if (galleryModalClose) {
+  galleryModalClose.addEventListener("click", closeGalleryModal);
+}
+
+if (galleryModalBackdrop) {
+  galleryModalBackdrop.addEventListener("click", closeGalleryModal);
 }
 
 if (galleryImages.length && lightbox) {
@@ -563,7 +589,11 @@ if (lightboxBackdrop) {
 
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    closeLightbox();
+    if (galleryModal && !galleryModal.hidden) {
+      closeGalleryModal();
+    } else {
+      closeLightbox();
+    }
   }
 });
 
